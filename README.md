@@ -23,3 +23,7 @@ Supported environment variables for yaml
 * MONGODB_VERSION - default "4.4"
 * MONGO_IP - default "127.0.0.1"
 * MONGOEXPRESS_IP - default "127.0.0.1"
+
+## Cleanup after any version changes
+
+If you don't need to keep data. Make sure to nuke the volumes/mongodb# directories and re-create them before doing a docker-compose up again.
