@@ -3,12 +3,12 @@ version: "3"
 services:
   mongodb1:
     container_name: mongo1
-    image: mongo
+    image: mongo:${MONGODB_VERSION:-4.4}
     restart: always
     volumes:
       - ./volumes/mongodb1:/data/db
     ports:
-      - "27011:27011"
+      - "${MONGO_IP:-127.0.0.1}:27011:27011"
     expose:
       - "27011"
     entrypoint:
@@ -21,12 +21,12 @@ services:
 
   mongodb2:
     container_name: mongo2
-    image: mongo
+    image: mongo:${MONGODB_VERSION:-4.4}
     restart: always
     volumes:
       - ./volumes/mongodb2:/data/db
     ports:
-      - "27012:27012"
+      - "${MONGO_IP:-127.0.0.1}:27012:27012"
     expose:
       - "27012"
     entrypoint:
@@ -39,12 +39,12 @@ services:
 
   mongodb3:
     container_name: mongo3
-    image: mongo
+    image: mongo:${MONGODB_VERSION:-4.4}
     restart: always
     volumes:
       - ./volumes/mongodb3:/data/db
     ports:
-      - "27013:27013"
+      - "${MONGO_IP:-127.0.0.1}:27013:27013"
     expose:
       - "27013"
     entrypoint:
@@ -68,7 +68,7 @@ services:
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://mongodb1:27011,mongodb2:27012,mongodb3:27013/?replicaSet=rs0
     ports:
-      - 8081:8081
+      - "${MONGOEXPRESS_IP:-127.0.0.1}:8081:8081"
     restart: always
     depends_on:
       - mongodb1
