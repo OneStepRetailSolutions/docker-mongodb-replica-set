@@ -17,7 +17,7 @@ Access http://localhost:8081/ to open Mongo Express
 
 Connect to mongodb by URL: `mongodb://mongodb1:27011,mongodb2:27012,mongodb3:27013/?replicaSet=rs0`
 
-##.env
+## .env
 Supported environment variables for yaml
 
 * MONGODB_VERSION - default "4.4"
